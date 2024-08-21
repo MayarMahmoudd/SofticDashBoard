@@ -1,0 +1,42 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header">{{ 'Attachment' | translate }}</p>
+    </div>
+    <div class="col-lg-8">
+      <ng-container *ngIf="data.length > 0; else noDataTemplate">
+        <div class="card mt-3" *ngFor="let attachment of data">
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'AttachmentName' | translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel fullAddressLabel">{{ attachment.name}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'UploadFile' | translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <a class="customSecondLabel fullAddressLabel" [href]="attachment.file" download>{{ 'UploadFile' |
+                translate}}</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'descrip' | translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel fullAddressLabel">{{ currentLang === 'ar' ?
+                attachment.fileDescription?.descriptionAr : attachment.fileDescription?.description }}</label>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noDataTemplate>
+        <p class="text-center">{{'NoDataEntered' | translate }}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

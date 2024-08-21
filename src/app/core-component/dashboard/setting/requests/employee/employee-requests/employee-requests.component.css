@@ -1,0 +1,51 @@
+.text{
+    color: var(--Secondary-1, #13095F);
+    font-family: Almarai;
+    font-size: 40px;
+    font-weight: 800;
+}
+.e-grid .e-content{
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #1723188c #f1f1f1;
+}
+.e-grid .e-gridheader .e-sortfilter .e-headercelldiv, .e-grid .e-gridheader .e-stackedheadercelldiv ,
+.e-grid .e-gridheader .e-sortfilter .e-headercelldiv, .e-grid .e-gridheader .e-stackedheadercelldiv  {
+    justify-content: center  !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-family: Almarai;
+
+}
+.customMorebtn{
+    font-size: 14px;
+    color: #003da5;
+    font-family: Almarai;
+}
+.custom-header {
+    font-family: Almarai;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+  }
+  .input-icon {
+    width: 75%;
+    border-radius: 22px;
+    padding: 0.3em 1em 0.3em 0.3em;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    font-family: Almarai;
+  }
+  .input-icon option{
+    font-family: Almarai;
+    text-align: center;
+    font-size: 14px;
+  }
+  .GridText{
+    font-family: Almarai;
+    text-align: center;
+    font-size: 14px;
+  }

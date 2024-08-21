@@ -1,0 +1,26 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header">{{ 'CustomerType' | translate}}</p>
+    </div>
+    <div class="col-lg-8">
+      <ng-container *ngIf="mappedLifestyleTypes.length > 0; else noDataTemplate">
+        <div class="card mb-2" *ngFor="let type of mappedLifestyleTypes">
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">
+                {{ currentLang !== 'ar' ? type.name : type.nameAr }}
+              </label>
+            </div>
+            <div class="col-lg-5">
+              <img src="assets/image/checked.png" alt="checked" style="width: 50px; height: 50px;">
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noDataTemplate>
+        <p class="text-center">{{ 'NoDataEntered'| translate }}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

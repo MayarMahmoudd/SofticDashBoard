@@ -1,0 +1,43 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header">{{ 'Skills' | translate }}</p>
+    </div>
+    <div class="col-lg-8">
+      <ng-container *ngIf="data.length > 0; else noDataTemplate">
+        <div class="card mt-3" *ngFor="let skill of data">
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'SkillN'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel fullAddressLabel">{{(currentLang=='ar'?skill.nameAr :skill.name )
+                }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel ">{{ 'Skills' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel fullAddressLabel">{{ currentLang === 'ar' ?
+                skill.skillTypeNameAr : skill.skillTypeName }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'descrip' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel fullAddressLabel">{{(currentLang=='ar'?skill.descriptionAr
+                :skill.description ) }} </label>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noDataTemplate>
+        <p class="text-center">{{ 'NoDataEntered' | translate}}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

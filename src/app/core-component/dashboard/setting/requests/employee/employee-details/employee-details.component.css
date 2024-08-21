@@ -1,0 +1,73 @@
+.firstSection {
+    background-image: url('../../../../../../../assets/image/Frame 1000003876 (1).png');
+    background-size: cover;
+    /* Ensures the image covers the entire container */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+}
+
+.header {
+    font-family: Almarai;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 66.96px;
+    text-align: right;
+}
+
+.description {
+    font-family: Almarai;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 47.89px;
+    text-align: right;
+    color: var(--G-gray-1, #6E6F70);
+}
+
+.accept-btn {
+    background-color: #52b2db;
+    color: #fff;
+    border-radius: 22px;
+    padding: 12px;
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.reject-btn {
+    background-color: white;
+    border: 1px solid var(--Danger, #FF3A30);
+    color: #FF3A30;
+    border-radius: 22px;
+    padding: 12px;
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.tabs-section {
+    width: 85%;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+.mat-mdc-tab .mdc-tab__text-label,
+.mdc-tab__text-label {
+    color: var(--G-gray-2, #AAAAAB) !important;
+    font-family: Almarai;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22.32px;
+    text-align: right;
+}
+
+.tab-content {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.mat-mdc-tab-header{
+    background: var(--LIGHT-GRAY, #F4F4F4) !important;
+
+}

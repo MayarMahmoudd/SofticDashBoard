@@ -1,0 +1,135 @@
+<div class="container my-3">
+  <div class="row" *ngIf="employeeAddress[0]">
+    <div class="col-lg-4">
+      <p class="header"> {{ 'Address/PlaceOfResidence' | translate }}</p>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Country' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ currentLang === 'ar' ? country[0]?.[0]?.nameAr : country[0]?.[0]?.name
+              }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'city' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{(currentLang=='ar'?city[0]?.[0]?.nameAr:city[0]?.[0]?.name)}}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'area' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{(currentLang=='ar'?zone[0]?.[0]?.nameAr:zone[0]?.[0]?.name)}}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'StreetName' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employeeAddress[0].street }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'BuildingNumber' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employeeAddress[0].buildingNo }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Distinctivesign' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employeeAddress[0].nearBy }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[0]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Fulladdress' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel fullAddressLabel">{{ employeeAddress[0].fullAddress }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="employeeAddress[1] ">
+    <div class="col-lg-4">
+      <p class="header">{{'Address/CountryofOrigin' | translate }}</p>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Country' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ currentLang === 'ar' ? country[1]?.[0]?.nameAr : country[1]?.[0]?.name
+              }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'city' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{(currentLang=='ar'?city[1]?.[0]?.nameAr:city[1]?.[0]?.name)}}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'area' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{(currentLang=='ar'?zone[1]?.[0]?.nameAr:zone[1]?.[0]?.name)}}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'StreetName' | translate}}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employeeAddress[1].street }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'BuildingNumber' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employeeAddress[1].buildingNo }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Distinctivesign' | translate}}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employeeAddress[1].nearBy }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employeeAddress[1]">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Fulladdress' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel fullAddressLabel">{{ employeeAddress[1].fullAddress }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

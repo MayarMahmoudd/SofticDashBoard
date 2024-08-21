@@ -1,0 +1,85 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header"> {{ 'Certificates' | translate }}</p>
+    </div>
+    <div class="col-lg-8">
+      <div class="card mb-3" *ngFor="let certificate of data">
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'University' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ certificate.issuer }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{'specialize' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ certificate.specialist }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'Grade'| translate}}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ certificate.issuer }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'special'| translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ certificate.specialist }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'From' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ certificate.from | date:'MMMM d, y' }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'To' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ certificate.to | date:'MMMM d, y' }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'certificateType' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ getCertificateTypeName(certificate.certificateTypeId) }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'descrip' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label
+              class="customSecondLabel fulldescLabel">{{(currentLang=='ar'?certificate.fileDescription?.descriptionAr
+              :certificate.fileDescription?.description ) }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel"> {{ 'downloadfile' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <a class="customSecondLabel" [href]="certificate.file" download>{{ 'download' | translate }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

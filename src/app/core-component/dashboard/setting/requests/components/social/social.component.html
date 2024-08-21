@@ -1,0 +1,182 @@
+<div class="container my-3" *ngFor="let employee of data">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header">{{ 'Communicate' | translate }}</p>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="row" *ngIf="employee.userTelephones && employee.userTelephones.length > 0">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'MobileNumber' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">
+              <span *ngFor="let phone of employee.userTelephones">
+                <ng-container *ngIf="phone.isFavourit">
+                  {{ phone.telephone }} ⭐<br>
+                </ng-container>
+                <ng-container *ngIf="!phone.isFavourit">
+                  {{ phone.telephone }}<br>
+                </ng-container>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employee.userEmails && employee.userEmails.length > 0">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'Email' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">
+              <span *ngFor="let email of employee.userEmails">
+                <ng-container *ngIf="email.isFavorite">
+                  {{ email.email }} ⭐<br>
+                </ng-container>
+                <ng-container *ngIf="!email.isFavorite">
+                  {{ email.email }}<br>
+                </ng-container>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employee.facebook">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'facebook' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.facebook }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employee.twitterX">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'twitter' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.twitterX }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employee.instgram">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'instagram' | translate}}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.instgram }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employee.linkedIn">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'linkedin' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.linkedIn }}</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="employee.snapShot">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'snapchat' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.snapShot }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-lg-4">
+        <p class="header">{{ 'Refrence' | translate }}</p>
+      </div>
+      <div class="col-lg-8 ">
+        <ng-container *ngIf="employee.userRefernces &&  employee.userRefernces.length > 0; else noDataTemplate">
+          <div class="card mt-3" *ngFor="let reference of employee.userRefernces">
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'ReferenceName'| translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.name }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'referencePhone'| translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.telephone }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'Distinctivesign' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.nearBy }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'enterStreetName' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.street }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'floor' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.floor }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'unit' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.unit }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'BuildingNumber' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.buildingNo }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'referenceType' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ getReferenceTypeName(reference.refernceTypeId) }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'employeeRefernceId' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel">{{ reference.employeeRefernceId }}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 firstSec">
+                <label class="customFirstLabel">{{ 'Fulladdress' | translate }}</label>
+              </div>
+              <div class="col-lg-5">
+                <label class="customSecondLabel fullAddressLabel">{{ reference.fullAddress }}</label>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noDataTemplate>
+          <p class="text-center">{{ 'NoDataEntered' | translate }}</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+.card{
+    padding: 40px;
+    gap: 20px;
+    border-radius: 10px ;
+    border: 1px;
+    opacity: 0px;
+    border: 1px solid var(--G-gray-3, #D3D3D3)
+    }
+    .header{
+        color: var(--Color-2, #211E1E);
+        font-family: Almarai;
+        font-size: 24px;
+        font-weight: 800;
+    }
+    .customFirstLabel{
+        color: var(--G-gray-1, #6E6F70);
+        font-family: Almarai;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 28px;
+    }
+    .customSecondLabel{
+    font-family: Almarai;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--1, #003DA6);
+    }
+    /* .firstSec{
+        border-left: 1px solid black;
+    } */
+    .fulldescLabel {
+      display: block;
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+  }

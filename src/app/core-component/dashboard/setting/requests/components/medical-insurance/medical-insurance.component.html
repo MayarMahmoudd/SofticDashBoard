@@ -1,0 +1,87 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header">{{ 'MedicalInsurance' | translate}}</p>
+    </div>
+    <div class="col-lg-8">
+      <div class="card" *ngIf="employee; else noDataTemplate">
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'weight' | translate}}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.weight || ('NoDataEntered' | translate)
+              }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'height' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.hight || ('NoDataEntered' | translate)
+              }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'BloodType' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.bloodType || 'NoDataEntered' | translate
+              }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'expiryon' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.expiryon ? (employee.expiryon | date:'MMMM d, y') :
+              'NoDataEntered' | translate }}</label>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'kindofdisease' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.chronicdiseaseName ||
+              'NoDataEntered' | translate }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'InsuranceCompanyName' | translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.insuranceCompany ||
+              'NoDataEntered' | translate }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'InsuranceCompanyNumber' | translate}}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel">{{ employee.medicalInsuranceNumber ||
+              'NoDataEntered'| translate }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 firstSec">
+            <label class="customFirstLabel">{{ 'allergy'| translate }}</label>
+          </div>
+          <div class="col-lg-5">
+            <label class="customSecondLabel fullAddressLabel">{{ employee.allergy || 'NoDataEntered'|
+              translate }}</label>
+          </div>
+        </div>
+      </div>
+      <ng-template #noDataTemplate>
+        <p class="text-center">{{ 'NoDataEntered'| translate }}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

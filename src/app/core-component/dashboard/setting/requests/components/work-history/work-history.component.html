@@ -1,0 +1,143 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <p class="header">{{ 'Employmenthistory' | translate}}</p>
+    </div>
+    <div class="col-lg-8">
+      <ng-container *ngIf="data.length > 0; else noDataTemplate">
+        <div class="card mt-3" *ngFor="let workHistory of data">
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'company' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.companyName }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'From'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.startFrom | date:'MMMM d, y' }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'To'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.endAt | date:'MMMM d, y' }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'JobTitle'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.jobTitle }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'firstReferenceName'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.firstReferenceName }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'firstReferencJob' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.firstReferencJob }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'firstReferenceTelephone'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.firstReferencTelephone }}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="workHistory.secondReferenceName">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'secondReferenceName'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.secondReferenceName }}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="workHistory.secondReferencJob">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'secondReferencJob' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.secondReferencJob }}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="workHistory.secondReferencTelephone">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'secondReferenceTelephone'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ workHistory.secondReferencTelephone }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'BussinessSize' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ getBusinessSizeName(workHistory.businessSizeId) }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'BussinessType'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{ getBusinessTypeName(workHistory.businessTypeId) }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'UploadFile'| translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <a class="customSecondLabel" [href]="workHistory.file" download>{{ 'download' | translate}}</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'CertficatefileDescrition' | translate}}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">{{(currentLang=='ar'?workHistory.fileDescription?.descriptionAr
+                :workHistory.fileDescription?.description )}}</label>
+            </div>
+
+          </div>
+          <div class="row" *ngIf="workHistory.isCurrent">
+            <div class="col-lg-5 firstSec">
+              <label class="customFirstLabel">{{ 'isCurrent' | translate }}</label>
+            </div>
+            <div class="col-lg-5">
+              <label class="customSecondLabel">
+                <img src="../../../../../../../assets/image/checked.png" style="width: 50px;height: 50px;"
+                  alt="checked">
+              </label>
+            </div>
+
+
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noDataTemplate>
+        <p class="text-center">{{ 'NoDataEntered' | translate}}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

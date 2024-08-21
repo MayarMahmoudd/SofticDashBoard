@@ -1,4 +1,4 @@
-export interface EmployeeReference {
+export interface UserReference {
   name: string;
   rRelationShipID: number;
   telephone: string;
@@ -9,9 +9,9 @@ export interface EmployeeReference {
   unit: string;
   buildingNo: string;
   isEmployee: boolean;
-  employeeId: number;
+  userId: number;
   refernceTypeId: number;
-  id?:number
+  id?: number
 }
 export interface EmployeeReferenceType {
   id?: number;
