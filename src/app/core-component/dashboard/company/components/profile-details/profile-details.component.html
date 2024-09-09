@@ -1,43 +1,37 @@
 <div class="container mt-4">
+  <!-- Edit button to toggle between edit and view modes -->
   <div class="row">
     <div class="editbtn">
-      <!-- Toggle edit mode -->
       <button (click)="toggleEdit()">
         <i style="color: white;" class="fa-solid fa-pen-to-square"></i>
         {{ editMode ? 'Cancel' : 'Edit' }}
       </button>
     </div>
   </div>
-  <div class="about-content col-lg-6 col-md-6 col-sm-12">
-    <h2>{{ 'PROFILE_DETAILS.ABOUT' | translate }}</h2>
-    <p class="info-description">
-      {{ isArabic ? (company.descriptionAr || 'PROFILE_DETAILS.NO_DATA' | translate) : (company.description || 'PROFILE_DETAILS.NO_DATA' | translate) }}
-    </p>
-  </div>
+
+  <!-- Display company details when not in edit mode -->
+  <div *ngIf="!editMode">
+    <div class="about-content col-lg-6 col-md-6 col-sm-12">
+      <h2>{{ 'PROFILE_DETAILS.ABOUT' | translate }}</h2>
+      <p class="info-description">
+        {{ isArabic ? (company.descriptionAr || 'PROFILE_DETAILS.NO_DATA' | translate) : (company.description || 'PROFILE_DETAILS.NO_DATA' | translate) }}
+      </p>
     </div>
+
     <div class="contact-details col-lg-6 col-md-6 col-sm-12">
-    <ul>
-        <li><strong>{{ 'PROFILE_DETAILS.ADDRESS' | translate }}</strong>: 
-          {{ company.address || ('PROFILE_DETAILS.NO_DATA' | translate) }}
-        </li>
-        <li><strong>{{ 'PROFILE_DETAILS.EMAIL' | translate }}</strong>: 
-          {{ company.email || ('PROFILE_DETAILS.NO_DATA' | translate) }}
-        </li>
-        <li><strong>{{ 'PROFILE_DETAILS.MOBILE' | translate }}</strong>: 
-          {{ company.phoneNumber || ('PROFILE_DETAILS.NO_DATA' | translate) }}
-        </li>
-        <li><strong>{{ 'PROFILE_DETAILS.FAX' | translate }}</strong>: 
-          {{ company.fax || ('PROFILE_DETAILS.NO_DATA' | translate) }}
-        </li>
-        <li><strong>{{ 'PROFILE_DETAILS.PHONE' | translate }}</strong>: 
-          {{ company.phone || ('PROFILE_DETAILS.NO_DATA' | translate) }}
-        </li>
+      <ul>
+        <li><strong>{{ 'PROFILE_DETAILS.ADDRESS' | translate }}</strong>: {{ company.address || ('PROFILE_DETAILS.NO_DATA' | translate) }}</li>
+        <li><strong>{{ 'PROFILE_DETAILS.EMAIL' | translate }}</strong>: {{ company.email || ('PROFILE_DETAILS.NO_DATA' | translate) }}</li>
+        <li><strong>{{ 'PROFILE_DETAILS.MOBILE' | translate }}</strong>: {{ company.phoneNumber || ('PROFILE_DETAILS.NO_DATA' | translate) }}</li>
+        <li><strong>{{ 'PROFILE_DETAILS.FAX' | translate }}</strong>: {{ company.fax || ('PROFILE_DETAILS.NO_DATA' | translate) }}</li>
+        <li><strong>{{ 'PROFILE_DETAILS.PHONE' | translate }}</strong>: {{ company.phone || ('PROFILE_DETAILS.NO_DATA' | translate) }}</li>
       </ul>
     </div>
+  </div>
+
   <!-- Display form when in edit mode -->
   <form *ngIf="editMode" [formGroup]="companyForm" (ngSubmit)="submitForm()">
     <div class="row">
-      <!-- File upload for company logo -->
       <div class="col-lg-6 justify-content-center d-flex col-md-12 col-sm-12">
         <label for="fileInput">
           <img [src]="uploadedImageBase64 || companyForm.get('logo')?.value || '../../../../../assets/images/softic/default.png'"
@@ -97,8 +91,8 @@
           [maxLength]="15"
           [phoneValidation]="true"
           formControlName="phone"
-          [separateDialCode]="true"   
-        ></ngx-intl-tel-input>
+          [separateDialCode]="true">
+        </ngx-intl-tel-input>
         <div *ngIf="companyForm.get('phone')?.invalid && companyForm.get('phone')?.touched">
           <small class="text-danger">Invalid phone number</small>
         </div>
@@ -118,45 +112,19 @@
             [maxLength]="15"
             [phoneValidation]="true"
             formControlName="phoneNumber"
-            [separateDialCode]="true"  
-          ></ngx-intl-tel-input>
+            [separateDialCode]="true">
+          </ngx-intl-tel-input>
           <div *ngIf="companyForm.get('phoneNumber')?.invalid && companyForm.get('phoneNumber')?.touched">
             <small class="text-danger">Invalid mobile number</small>
           </div>
         </div>
       </div>
     </div>
-<div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input required type="text" id="address" formControlName="address" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group col-lg-6">
-      <label for="email">Email</label>
-      <input id="email" formControlName="email" type="email" class="form-control" />
-    </div>
-  </div>
+
+    <!-- Description -->
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
-          <label for="webSite">Website</label>
-          <input type="text" id="webSite" formControlName="webSite" class="form-control" />
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
-          <label for="facebook">Facebook</label>
-          <input type="text" id="facebook" formControlName="facebook" class="form-control" />
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <!-- Description -->
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group" [ngClass]="{'has-error': isFieldInvalid('description')}">
           <label for="description">Description</label>
           <textarea id="description" formControlName="description" class="form-control CustomModelInput"
                     placeholder="Description" minlength="100" maxlength="250"></textarea>
@@ -168,10 +136,9 @@
           </div>
         </div>
       </div>
-    
-      <!-- Description (Arabic) -->
+
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group" [ngClass]="{'has-error': isFieldInvalid('descriptionAr')}">
+        <div class="form-group">
           <label for="descriptionAr">Description (Arabic)</label>
           <textarea id="descriptionAr" formControlName="descriptionAr" class="form-control CustomModelInput"
                     placeholder="Description (Arabic)" minlength="100" maxlength="250"></textarea>
@@ -184,9 +151,10 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Save Button -->
-     <Div class="d-flex justify-content-center"> 
-    <button type="submit" class="btn btn-next w-25">Save</button>
-  </Div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-next w-25">Save</button>
+    </div>
   </form>
+</div>
