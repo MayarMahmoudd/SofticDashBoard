@@ -309,7 +309,11 @@
     "DELETE_CONFIRMATION": "Are you sure you want to delete this employee?",
     "CANCEL": "Cancel",
     "DELETE": "Delete",
-    "SAVE":"Save" 
+    "SAVE":"Save",
+    "LONGITUDE_REQUIRED":"Longitude is required",
+    "LATITUDE_REQUIRED":"Latitude is required"
+
+
   },
   "personalInfo": {
     "PROFILE_INFORMATION": "Profile Information",

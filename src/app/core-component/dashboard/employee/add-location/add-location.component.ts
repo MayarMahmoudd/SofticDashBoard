@@ -10,7 +10,6 @@ import { Location } from '../../../../../models/location';
 import { MapComponent } from '../../../../common-component/map/map.component';
 import { LocalStorageService } from '../../../../services/local-storage-service/local-storage.service';
 import { EmployeeService } from '../../../../services/employeeService/employee.service';
-import { accountStatus } from '../../../../../models/enums/accountStatus';
 import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 declare var bootstrap: any;
@@ -26,14 +25,10 @@ export class AddLocationComponent implements OnInit{
   id: number = 0;
   locations: any[] = [];
   filteredLocations: any[] = [];
-  searchText:string='';
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalRows: number = 0;
-  isShowingPending: boolean = false;
-
   employee: employee = {} as employee;
-
   private unsubscribe$ = new Subject<void>();
   form: FormGroup;
 
@@ -42,8 +37,7 @@ export class AddLocationComponent implements OnInit{
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
     private translate: TranslateService,
-    private cdr: ChangeDetectorRef,
-    private router: Router){
+    private cdr: ChangeDetectorRef){
       this.form = this.fb.group({
         numOfDays: ['', Validators.required],
         attendanceDateFrom:['', Validators.required],
@@ -55,14 +49,12 @@ export class AddLocationComponent implements OnInit{
 
   ngOnInit(): void {
     this.companyId = Number(localStorage.getItem('companyId'));
-    console.log( this.companyId)
     this.route.paramMap.pipe(
       takeUntil(this.unsubscribe$)
     ).subscribe(params => {
       this.id = Number(params.get('id'));
       this.getEmployee();
     });
-
     this.loadEmployeeAllLocations();
   }
   getEmployee() {
@@ -74,10 +66,6 @@ export class AddLocationComponent implements OnInit{
     ).subscribe();
   }
 
-  cancel()
-  {
-
-  }
   loadEmployeeAllLocations()
   {
     if (this.companyId) {
@@ -91,7 +79,6 @@ export class AddLocationComponent implements OnInit{
           this.locations = response.data.list;
           this.filteredLocations = [...this.locations];
           this.totalRows = response.data.totalRows;
-        //  this.applyFilter();
           this.cdr.detectChanges();
         })
       ).subscribe(res=>{console.log(res)});
@@ -120,19 +107,19 @@ export class AddLocationComponent implements OnInit{
           this.form.reset()
         },
       error:(err)=>{
-        console.log( err);
+        console.log('Location added failed', err);
       }
-      }
-    );
+    });
   }
+  onCancel()
+  {
 
-
+  }
   onLocationSelected(location: { lat: number, lng: number }): void {
     console.log(location)
     this.form.patchValue({ lat: location.lat, long: location.lng });
   }
   openAddLocationModal() {
-//this.employeeToDelete = employee;
     const modalElement = document.getElementById('addLocationModal');
     const modal = new bootstrap.Modal(modalElement);
     modal.show();

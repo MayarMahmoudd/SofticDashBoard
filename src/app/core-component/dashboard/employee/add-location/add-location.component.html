@@ -59,13 +59,13 @@
             <label for="long">Longitude</label>
             <input id="long" formControlName="long"  placeholder="Enter Longitude" class="form-control" />
             <div *ngIf="form.get('long')?.invalid && form.get('long')?.touched" class="text-danger">{{
-              'addBranch.LONGITUDE_REQUIRED' | translate }}</div>
+              'viewEmployees.LONGITUDE_REQUIRED' | translate }}</div>
           </div>
           <div class="form-group d-none">
             <label for="lat">Latitude</label>
             <input id="lat" formControlName="lat" placeholder="Enter Latitude" class="form-control" />
             <div *ngIf="form.get('lat')?.invalid && form.get('lat')?.touched" class="text-danger">{{
-              'addBranch.LATITUDE_REQUIRED' | translate }}</div>
+              'viewEmployees.LATITUDE_REQUIRED' | translate }}</div>
           </div>
           <div class="form-group">
             <label for="numOfDays">Num of days</label>
@@ -104,7 +104,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-center align-items-center flex-column">
         <button type="submit" class="btn btn-new-Location w-100"  data-bs-dismiss="modal" (click)="onSave()">{{ 'viewEmployees.SAVE' | translate }}</button>
-        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal" aria-label="Close"(click)="cancel()">{{ 'viewEmployees.CANCEL' | translate }}</button>
+        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal" aria-label="Close"(click)="onCancel()">{{ 'viewEmployees.CANCEL' | translate }}</button>
       </div>
     </div>
   </div>
