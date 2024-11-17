@@ -65,4 +65,10 @@ export class EmployeeService {
     console.log(request);
     return this.apiCall.request('POST', employeeController.assignEmployeeLocation, request);
   }
+  dleteEmployeeAttendanceLocation(companyId: number, id: number): Observable<any> {
+    return this.apiCall.request('POST', employeeController.removeEmployeeAttendanceLocation(id, companyId));
+  }
+  EditEmployeeAttendanceLocation(request: any): Observable<any> {
+    return this.apiCall.request('POST', employeeController.editEmployeeAttendanceLocation, request);
+  }
 }

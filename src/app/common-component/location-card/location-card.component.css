@@ -13,3 +13,7 @@
 .card-icons{
   border-left: 1px solid #EAEBED;
 }
+:host
+{
+  display: inline;
+}

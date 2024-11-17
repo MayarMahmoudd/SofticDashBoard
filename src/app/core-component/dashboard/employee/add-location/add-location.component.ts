@@ -25,6 +25,7 @@ export class AddLocationComponent implements OnInit{
   companyId: number = 0;
   id: number = 0;
   locations: Location[] = [];
+  location!: Location;
   filteredLocations: Location[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 10;
@@ -32,6 +33,7 @@ export class AddLocationComponent implements OnInit{
   employee: employee = {} as employee;
   private unsubscribe$ = new Subject<void>();
   form: FormGroup;
+  editMode:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -114,7 +116,7 @@ export class AddLocationComponent implements OnInit{
   }
   onCancel()
   {
-
+    this.editMode=false;
   }
   onLocationSelected(location: { lat: number, lng: number }): void {
     console.log(location)
@@ -125,4 +127,53 @@ export class AddLocationComponent implements OnInit{
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
   }
+
+  editLocation(_location:Location){
+    this.location=_location;
+    this.editMode=true;
+    console.log(_location);
+    const modalElement = document.getElementById('addLocationModal');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
+  onUpdate()
+  {
+    if(this.editMode){
+    const locaton:Location= {
+      id: this.location.id,
+      attendanceDateFrom:  this.form.value.attendanceDateFrom,
+      attendanceDateTo: this.form.value.attendanceDateTo,
+      companyId:this.companyId,
+      long: this.form.value.long,
+      lat: this.form.value.lat,
+      employeeId:this.id
+    };
+    console.log(locaton);
+    this.employeeService.EditEmployeeAttendanceLocation(locaton).subscribe({
+      next: (response) => {
+        console.log('Location updated successfully', response);
+        this.loadEmployeeAllLocations();
+          this.form.reset()
+          this.editMode=false;
+        },
+      error:(err)=>{
+        console.log('Location updated failed', err);
+      }
+    });}
+  }
+  removeLocation(_location:Location){
+    console.log(_location);
+    this.employeeService.dleteEmployeeAttendanceLocation(Number(_location?.companyId),Number(_location?.id))
+    .subscribe({
+      next:(res)=> {console.log('Location deleted successfully', res);
+        this.loadEmployeeAllLocations();
+      },
+      error:(res)=>{console.log('Location deleted faild', res);
+        this.loadEmployeeAllLocations();
+      }
+
+    })
+    //this.OnDeleteLocation.emit(event);
+  }
+
 }

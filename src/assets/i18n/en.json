@@ -311,7 +311,16 @@
     "DELETE": "Delete",
     "SAVE":"Save",
     "LONGITUDE_REQUIRED":"Longitude is required",
-    "LATITUDE_REQUIRED":"Latitude is required"
+    "LATITUDE_REQUIRED":"Latitude is required",
+    "Edit":"Edit",
+    "viewEmployees.Latitude":"Latitude",
+    "viewEmployees.LONGITUDE":"Longitude",
+    "NUMOFDAY":"NUMOFDAY",
+    "select":"Open this select menu",
+    "Add New Location":"Add New Location",
+    "from":"from",
+    "to":"to"
+
 
 
   },
