@@ -1,1 +1,111 @@
-<p>add-location works!</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="justify-content-between d-flex align-items-center">
+      <h2 class="section-title">
+        {{employee.fullName}}
+      </h2>
+      <button class="btn btn-new-employee btn-primary" (click)="openAddLocationModal()" >
+        <i class="fas fa-plus-circle"></i>
+        {{ 'Add New Location' | translate }}
+      </button>
+    </div>
+
+  </div>
+  <div class="row mt-4 gy-4"*ngIf="filteredLocations.length > 0; else noData">
+    <div class="col-md-6" *ngFor="let location of filteredLocations">
+      <div class="location-card d-flex justify-content-center align-items-center rounded bg-white">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="card-text py-2 col-md-8">
+            <h5 class="card-text-title">Egypt( cairo )</h5>
+            <p class="card-text-address py-1">
+              24elraheb ,elshazly street<br/>
+            <span class="card-text-branch py-1">newcairo branch</span>
+          </p>
+          </div>
+          <div class="col-md-3">
+            <img [src]="'assets/images/location-img-circle.png'" alt="location Image" class="img-fluid rounded-circle"
+            />
+          </div>
+          <div class="card-icons col-md-1 d-flex flex-column justify-content-center align-items-center border-start-1">
+            <img [src]="'assets/images/edit-green-icon.png'" alt="edit Image" class="img-fluid py-3"/>
+            <img [src]="'assets/images/trash 01.png'" alt="edit Image" class="img-fluid py-3"/>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #noData>
+    <div class="no-locations-container text-center mt-5">
+      <p class="no-locations-message">{{ 'viewEmployees.NO_LOCATION_FOUND' | translate }}</p>
+    </div>
+  </ng-template>
+
+</div>
+<!-- Add New Location Modal -->
+<div class="modal fade rounded-3 newLocationModal " id="addLocationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-text">
+          <p class="lead">Edit the Employee </p>
+          <h3 class="py-1">UI/UX Designer </h3>
+        </div>
+        <form  [formGroup]="form">
+          <div class="form-group d-none">
+            <label for="long">Longitude</label>
+            <input id="long" formControlName="long"  placeholder="Enter Longitude" class="form-control" />
+            <div *ngIf="form.get('long')?.invalid && form.get('long')?.touched" class="text-danger">{{
+              'addBranch.LONGITUDE_REQUIRED' | translate }}</div>
+          </div>
+          <div class="form-group d-none">
+            <label for="lat">Latitude</label>
+            <input id="lat" formControlName="lat" placeholder="Enter Latitude" class="form-control" />
+            <div *ngIf="form.get('lat')?.invalid && form.get('lat')?.touched" class="text-danger">{{
+              'addBranch.LATITUDE_REQUIRED' | translate }}</div>
+          </div>
+          <div class="form-group">
+            <label for="numOfDays">Num of days</label>
+            <select for="numOfDays" class="form-select" formControlName="numOfDays" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+             </div>
+             <div class="form-group">
+              <label for="attendanceDateFrom">from:</label>
+              <input
+              type="date"
+              id="attendanceDateFrom"
+              formControlName="attendanceDateFrom"
+              class="form-control custom-date-filter"
+              [placeholder]="'From Date'| translate"
+              />
+              </div>
+              <div class="form-group">
+                <label for="attendanceDateTo">to:</label>
+                <input
+                type="date"
+                id="attendanceDateTo"
+                formControlName="attendanceDateTo"
+                class="form-control custom-date-filter"
+                [placeholder]="'From Date'| translate"
+                />
+                </div>
+          <div class="new-location-map-container">
+            <app-map (locationSelected)="onLocationSelected($event)"></app-map>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-center align-items-center flex-column">
+        <button type="submit" class="btn btn-new-Location w-100"  data-bs-dismiss="modal" (click)="onSave()">{{ 'viewEmployees.SAVE' | translate }}</button>
+        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal" aria-label="Close"(click)="cancel()">{{ 'viewEmployees.CANCEL' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

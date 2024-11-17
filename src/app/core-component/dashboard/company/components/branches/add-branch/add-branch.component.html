@@ -26,7 +26,7 @@
         <input id="lat" formControlName="lat" placeholder="Enter Latitude" class="form-control" />
         <div *ngIf="form.get('lat')?.invalid && form.get('lat')?.touched" class="text-danger">{{
           'addBranch.LATITUDE_REQUIRED' | translate }}</div>
-      </div>
+      </div> 
       <div class="form-group">
         <label for="map">{{ 'addBranch.BRANCH_LOCATION' | translate }}</label>
         <app-map (locationSelected)="onLocationSelected($event)" [long]="isEdit ? branch!.long : 46.738586" [lat]="isEdit ?  branch!.lat : 24.774265"></app-map>

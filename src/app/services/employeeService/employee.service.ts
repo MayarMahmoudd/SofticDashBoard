@@ -55,4 +55,14 @@ export class EmployeeService {
   loadEmployeeById(request: { id: number }): Observable<any> {
     return this.apiCall.request('POST', employeeController.loadEmployeeById, request);
   }
+
+  //employee location
+  loadEmployeeLocations(request: any): Observable<any> {
+    console.log(request);
+    return this.apiCall.request('POST', employeeController.loadEmployeeAttendanceLocation, request);
+  }
+  assignEmployeeLocation(request: any): Observable<any> {
+    console.log(request);
+    return this.apiCall.request('POST', employeeController.assignEmployeeLocation, request);
+  }
 }

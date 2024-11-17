@@ -10,7 +10,6 @@ import { accountStatus } from '../../../../../models/enums/accountStatus';
 import { tap, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-
 declare var bootstrap: any;
 
 @Component({
@@ -119,6 +118,9 @@ export class ViewEmployeesComponent implements OnInit {
   viewDetails(employee: employee) {
     this.router.navigate(['dashboard/employee-details', employee.id]);
   }
+  viewLocations(employee: employee) {
+    this.router.navigate(['dashboard/employee-locations', employee.id]);
+  }
 
   getEmployeeStatusLabel() {
     return this.isShowingPending
@@ -129,4 +131,6 @@ export class ViewEmployeesComponent implements OnInit {
     return this.isShowingPending
       ? 'viewEmployees.CURRENT_EMPLOYEES':'viewEmployees.NEW_EMPLOYEE_REQUESTS';
 }
+
+
 }

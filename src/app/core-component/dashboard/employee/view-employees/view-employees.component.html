@@ -22,6 +22,7 @@
           <th>{{ 'viewEmployees.DEPARTMENT' | translate }}</th>
           <th>{{ 'viewEmployees.POSITION' | translate }}</th>
           <th>{{ 'viewEmployees.ACTION' | translate }}</th>
+          <th>{{ 'viewEmployees.LOCATION' | translate }}</th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +42,12 @@
 
             <button class="btn btn-sm btn-danger" (click)="openDeleteModal(employee)">
               <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn  " (click)="viewLocations(employee)">
+              <img [src]="'assets/images/location.png'" alt="Profile Image" class="img-fluid"
+               />
             </button>
           </td>
         </tr>
