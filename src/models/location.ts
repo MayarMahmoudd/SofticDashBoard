@@ -3,8 +3,8 @@
     companyId?: number;
     attendanceDateFrom?:string;
     attendanceDateTo?: string;
-    long?: number;
-    lat?: number;
+    long: number;
+    lat: number;
     employeeId?: number
 
   }

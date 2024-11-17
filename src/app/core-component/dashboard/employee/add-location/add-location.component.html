@@ -12,28 +12,11 @@
 
   </div>
   <div class="row mt-4 gy-4"*ngIf="filteredLocations.length > 0; else noData">
-    <div class="col-md-6" *ngFor="let location of filteredLocations">
-      <div class="location-card d-flex justify-content-center align-items-center rounded bg-white">
-        <div class="row d-flex justify-content-center align-items-center">
-          <div class="card-text py-2 col-md-8">
-            <h5 class="card-text-title">Egypt( cairo )</h5>
-            <p class="card-text-address py-1">
-              24elraheb ,elshazly street<br/>
-            <span class="card-text-branch py-1">newcairo branch</span>
-          </p>
-          </div>
-          <div class="col-md-3">
-            <img [src]="'assets/images/location-img-circle.png'" alt="location Image" class="img-fluid rounded-circle"
-            />
-          </div>
-          <div class="card-icons col-md-1 d-flex flex-column justify-content-center align-items-center border-start-1">
-            <img [src]="'assets/images/edit-green-icon.png'" alt="edit Image" class="img-fluid py-3"/>
-            <img [src]="'assets/images/trash 01.png'" alt="edit Image" class="img-fluid py-3"/>
-
-          </div>
-        </div>
-
-      </div>
+    <div class="col-md-6" *ngFor="let location of filteredLocations" >
+      <app-location-card 
+        [long]="location.long"
+        [lat]="location.lat">
+      </app-location-card>
     </div>
 
   </div>
@@ -109,4 +92,3 @@
     </div>
   </div>
 </div>
- 

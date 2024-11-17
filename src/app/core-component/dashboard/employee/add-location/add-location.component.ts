@@ -12,19 +12,20 @@ import { LocalStorageService } from '../../../../services/local-storage-service/
 import { EmployeeService } from '../../../../services/employeeService/employee.service';
 import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { LocationCardComponent } from '../../../../common-component/location-card/location-card.component';
 declare var bootstrap: any;
 @Component({
   selector: 'app-add-location',
   standalone: true,
-  imports: [ModernTableComponent, RouterLink, FormsModule, CommonModule, PaginationModule, TranslateModule,MapComponent,ReactiveFormsModule],
+  imports: [ModernTableComponent, RouterLink, FormsModule, CommonModule, PaginationModule, TranslateModule,MapComponent,ReactiveFormsModule,LocationCardComponent],
   templateUrl: './add-location.component.html',
   styleUrl: './add-location.component.css'
 })
 export class AddLocationComponent implements OnInit{
   companyId: number = 0;
   id: number = 0;
-  locations: any[] = [];
-  filteredLocations: any[] = [];
+  locations: Location[] = [];
+  filteredLocations: Location[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalRows: number = 0;

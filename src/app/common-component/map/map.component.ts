@@ -21,7 +21,7 @@ export class MapComponent implements OnInit, OnChanges {
   public selectedAddress: string = '';
   zoom = 8;
   @Input() employee: any = {};
-  @Input() lat: number = 24.774265;
+  @Input() lat : number = 24.774265;
   @Input() long: number = 46.738586;
   @Output() locationSelected = new EventEmitter<{ lat: number, lng: number }>();
   constructor(
@@ -30,7 +30,6 @@ export class MapComponent implements OnInit, OnChanges {
   ) {
     this.getAddressFromCoordinates(this.long, this.lat);
   }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['lat'] || changes['long']) {
       if (this.map) {
